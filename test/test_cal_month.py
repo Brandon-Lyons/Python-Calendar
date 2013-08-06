@@ -49,3 +49,17 @@ class MonthUnitTests(unittest.TestCase):
 	def test_number_of_days_non_leap_century(self):
 		cal = Month(2, 1900)
 		self.assertEqual(28, cal.days_number())
+
+	def test_blank_spaces(self):
+		cal = Month(2, 1990)
+		self.assertEqual(["  ","  ","  ","  "], cal.spaces())
+
+	def test_days(self):
+		cal = Month(2, 1990)
+		expected = [" 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"]
+		self.assertEqual(expected, cal.days())
+
+	def test_format_days(self):
+		cal = Month(2, 1990)
+		expected = ["  ","  ","  ","  "," 1"," 2"," 3"," 4"," 5"," 6"," 7"," 8"," 9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28"]
+		self.assertEqual(expected, cal.format_days())

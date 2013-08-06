@@ -6,7 +6,7 @@ class Month(object):
 
 	def header(self):
 		month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-		string = "%s %s" % (month_names[self.month -1], self.year)
+		string = "%s %s" %(month_names[self.month - 1], self.year)
 		return string.center(20, ' ').rstrip()
 
 	def week_row(self):
@@ -34,3 +34,39 @@ class Month(object):
 			return 29
 		else:
 			return 28
+
+	def spaces(self):
+		spaces = list()
+		for _ in xrange(self.zeller()):
+			spaces.append("  ")
+		return spaces
+
+	def days(self):
+		days = list()
+		for i in range(1,self.days_number() + 1):
+			num = str(i)
+			if len(num) == 1:
+				num = " " + num
+				days.append(num)
+			else:
+				days.append(num)
+		return days
+
+	def format_days(self):
+		formatted = list()
+		formatted.extend(self.spaces())
+		formatted.extend(self.days())
+		return formatted
+
+	def display_month(self):
+		header = self.header() + "\n" + self.week_row() + "\n"
+		days = self.format_days()
+		weeks = ""
+		while days:
+			for _ in xrange(7):
+				weeks += days.pop(0) + " "
+				if len(days) == 0:
+					break
+			weeks += "\n"
+		month = header + weeks
+		return month
