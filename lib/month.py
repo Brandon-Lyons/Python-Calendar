@@ -5,9 +5,14 @@ class Month(object):
 		if month == None:
 			self.month = date.today().month
 			self.year = date.today().year
+		elif len(str(month)) >= 3:
+			months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+			month = month.lower()
+			self.month = months.index(month[:3]) + 1
+			self.year = int(year)
 		else:
-			self.month = month
-			self.year = year
+			self.month = int(month)
+			self.year = int(year)
 
 	def header(self):
 		month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
