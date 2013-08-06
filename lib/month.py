@@ -1,8 +1,13 @@
+from datetime import date
 class Month(object):
 
-	def __init__(self, month, year):
-		self.month = month
-		self.year = year
+	def __init__(self, month = None, year = None):
+		if month == None:
+			self.month = date.today().month
+			self.year = date.today().year
+		else:
+			self.month = month
+			self.year = year
 
 	def header(self):
 		month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
