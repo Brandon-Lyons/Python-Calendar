@@ -19,6 +19,10 @@ class Month(object):
 		string = "%s %s" %(month_names[self.month - 1], self.year)
 		return string.center(20, ' ').rstrip()
 
+	def month_header(self):
+		month_names = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+		return month_names[self.month - 1]
+
 	def week_row(self):
 		return "Su Mo Tu We Th Fr Sa"
 
@@ -68,7 +72,7 @@ class Month(object):
 		formatted.extend(self.days())
 		return formatted
 
-	def display_month(self):
+	def display(self):
 		header = self.header() + "\n" + self.week_row() + "\n"
 		days = self.format_days()
 		weeks = ""
